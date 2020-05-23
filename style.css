@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.wrapper {
+  height: 100%;
+  margin: 20;
+  padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 0px;
+    padding-top: 0px;
+    color: hsl(206, 17%, 28%);
+}
+
+.card-header::after {
+    content: " ";
+    display: block;
+    width: 100%;
+    background: #e7e9eb;
+    height: 0px;
+}
+  
+  
