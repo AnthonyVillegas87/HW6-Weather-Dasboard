@@ -19,19 +19,7 @@ header {
     color: hsl(206, 17%, 28%);
 }
 
-.container {
-    border-collapse: collapse;
-    
-}
-
-table {
-    border-colapse: collapse;
-    border: 1px solid black;
-}
-
-
-
-.card-header::after {
+card-header::after {
     content: " ";
     display: block;
     width: 100%;
@@ -39,11 +27,12 @@ table {
     height: 0px;
 }
 
-.row {
-    text-align: center;
+
+
+row {
     white-space: pre-wrap;
     height: 80px;
-    border-top: 1px solid white;;
+    border-top: 1px solid black;
 }
   
   
