@@ -5,24 +5,60 @@
        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Weather Dashboard</title>
         <link href="https://api.openweathermap.org/data/2.5/weather?q=San Antonio,us?&appid=e3f2fa3a336dfd7d3e653d613da5e010">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
         <link href="style.css" rel="stylesheet">
 
     </head>
     <body>
-        <div class="wrapper">
+        <div class="page-header">
             <header>
               <h1>Weather Dashboard</h1>
             </header>
-            <div class="card">
-              <div class="card-header">
-                <h2>search for city</h2>
-              </div>
-              <div class="card-body">
-                <textarea readonly id="city" placeholder="search" style="margin: 0px; height: 32px; width: 192px;"></textarea>
-            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-header">
+             <h2>search for a city</h2>
+             <div class="card-body">
+                <textarea readonly id="city" placeholder="search" style="margin: 0px; height: 25px; width: 180px;"></textarea>
+                <a href="#" class="btn btn-primary">search</a>
+            </div>     
+          </div>
+        </div>
+        <div> 
+             <table class="container">
+                <table class="table">
+                    <tbody>
+                      <tr>
+                        <td class="row" id="city1">Austin</td>
+                      </tr>
+                      <tr>
+                        <td class="row" id="city2">Chicago</td>
+                      </tr>
+                      <tr>
+                        <td class="row" id="city3">New York</td>
+                      </tr>
+                      <tr>
+                        <td class="row" id="city4">Orlando</td>
+                      </tr>
+                      <tr>
+                        <td class="row" id="city5">San Francisco</td>
+                      </tr>
+                      <tr>
+                        <td class="row" id=city6>Seattle</td>
+                      </tr>
+                      <tr>
+                        <td class="row" id="city7">Denver</td>
+                      </tr>
+                      <tr>
+                        <td class="row" id=city8>Atlanta</td>
+                      </tr>
+                    </tbody>
+                </table>    
+            </table>
+        </div>
 
-      
-
+            
+        
 
         <script src="script.js"></script>
     </body>
