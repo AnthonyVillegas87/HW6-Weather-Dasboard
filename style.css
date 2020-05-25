@@ -1,8 +1,3 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
 html,
 body,
@@ -19,22 +14,17 @@ header {
     color: hsl(206, 17%, 28%);
 }
 
-card-header::after {
-    content: " ";
-    display: block;
-    width: 100%;
-    background: #e7e9eb;
-    height: 0px;
+.card {
+  width: 200px;
+  height: 200px;
+  margin: 12px;
 }
 
-container {
-  
+.row {
+  white-space: pre-wrap;
+  height: 80px;
+  border-top: 1px solid black;
 }
 
-row {
-    white-space: pre-wrap;
-    height: 80px;
-    border-top: 1px solid black;
-}
   
   
