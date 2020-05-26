@@ -1,2 +1,147 @@
+let userCity = "";
+const cityToStore = userCity;
 
+function weatherForecast() {
+
+    function getUserCity() {
+        const searchButtonEl = document.getElementById('citySearch');
+        console.log(searchButtonEl);
+         //const cityInputEl = document.getElementById('search');
+        searchButtonEl.addEventListener('click', function () {
+            event.preventDefault();
+            userCity = document.getElementById('city').value;
+
+            console.log('You searched for this city: ', userCity);
+            storeInLocalStorage(userCity);
+            searchForCityWeather(userCity);
+            searchForForecast(userCity);
+            displayLocalStorage(userCity);
+        });
+    }
+    getUserCity();
+
+    function storeInLocalStorage(userCity) {
+        const cityToStore = userCity;
+        let strCities = window.localStorage.getItem("strCities") || "[]";
+        console.log(strCities);
+        const cities = JSON.parse(strCities);
+        cities.push(cityToStore);
+        strCities = JSON.stringify(cities);
+        localStorage.setItem('user', strCities);
+        console.log("Local Storage: ", strCities)
+    }
+
+    storeInLocalStorage();
+
+    function displayLocalStorage() {
+
+        var history = "";
+        if (localStorage.getItem("history") !== "") {
+            var history = localStorage.getItem("history");
+        }
+
+
+        if (history !== "") {
+            $("#lastResults").html(
+                "<b>Last Results:</b>" +
+                "<ul data-role=\"listview\" data-inset=\"true\" >" +
+                "<li><a href=\"#test\"> " + document(history) + " </a></li>" +
+                "</ul>"
+            );
+        }
+    };
+
+    function searchForCityWeather(userCity) {
+
+        const apiKey = "e3f2fa3a336dfd7d3e653d613da5e010";
+        const cityName = userCity;
+        const units = "imperial";
+        const oneDayWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=" + units + "&appid=" + apiKey;
+        axios.get(oneDayWeatherURL)
+            .then(function (response) {
+                console.log(response.data.name)
+                document.getElementById("name").innerHTML = response.data.name;
+                document.getElementById("temp").innerHTML = "Temperature: " + response.data.main.temp + " °F";
+                document.getElementById("humidity").innerHTML = "Humidity: " + response.data.main.humidity + "%";
+                document.getElementById("wind").innerHTML = "Wind Speed: " + response.data.wind.speed + " mph";
+
+            })
+    };
+
+    function searchForCityCoord(userCity) {
+
+        const apiKey = "e3f2fa3a336dfd7d3e653d613da5e010";
+        const cityName = userCity;
+        const units = "imperial";
+        const oneDayWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=" + units + "&APPID=" + apiKey;
+        axios.get(oneDayWeatherURL)
+            .then(function (response) {
+                console.log(response)
+
+                document.getElementById("lat").innerHTML = "Latitude: " + response.data.city.coord.lat;
+                document.getElementById("lon").innerHTML = "Longitude: " + response.data.city.coord.lon;
+
+            })
+
+    };
+
+    function searchForForecast(userCity) {
+        const apiKey = "e3f2fa3a336dfd7d3e653d613da5e010";
+        const cityName = userCity;
+        const units = "imperial";
+        const oneDayWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=" + units + "&APPID=" + apiKey;
+        axios.get(oneDayWeatherURL)
+            .then(function (response) {
+                console.log(response.data.list[0])
+                document.getElementById("date0").innerHTML = "Date: " + response.data.list[0].dt_txt;
+                document.getElementById("temp0").innerHTML = "Temperature: " + response.data.list[0].main.temp + " °F";
+                document.getElementById("humidity0").innerHTML = "Humidity: " + response.data.list[0].main.humidity + "%";
+                //document.getElementById("icon0").innerHTML = ": " + response.data.list[0].weather[0].icon;
+
+            })
+        axios.get(oneDayWeatherURL)
+            .then(function (response) {
+                document.getElementById("date1").innerHTML = "Date: " + response.data.list[10].dt_txt;
+                document.getElementById("temp1").innerHTML = "Temperature: " + response.data.list[10].main.temp + " °F";
+                document.getElementById("humidity1").innerHTML = "Humidity: " + response.data.list[10].main.humidity + "%";
+
+            })
+            axios.get(oneDayWeatherURL)
+                .then(function (response) {
+                    document.getElementById("temp2").innerHTML = "Temperature: " + response.data.list[18].main.temp + " °F";
+                    document.getElementById("date2").innerHTML = "Date: " + response.data.list[18].dt_txt;
+                    document.getElementById("humidity2").innerHTML = "Humidity: " + response.data.list[18].main.humidity + "%";
+    
+    
+    
+    
+                })
+            axios.get(oneDayWeatherURL)
+                .then(function (response) {
+                    document.getElementById("date3").innerHTML = "Date: " + response.data.list[26].dt_txt;
+                    document.getElementById("temp3").innerHTML = "Temperature: " + response.data.list[26].main.temp + " °F";
+                    document.getElementById("humidity3").innerHTML = "Humidity: " + response.data.list[26].main.humidity + "%";
+    
+    
+    
+    
+                })
+            axios.get(oneDayWeatherURL)
+                .then(function (response) {
+                    document.getElementById("temp4").innerHTML = "Temperature: " + response.data.list[34].main.temp + " °F";
+                    document.getElementById("date4").innerHTML = "Date: " + response.data.list[34].dt_txt;
+                    document.getElementById("humidity4").innerHTML = "Humidity: " + response.data.list[34].main.humidity + "%";
+    
+    
+    
+                })
+    
+    
+        };
+    
+    
+    
+    
+    };
+    weatherForecast()                
 
