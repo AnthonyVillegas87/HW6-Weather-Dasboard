@@ -6,12 +6,10 @@ function weatherForecast() {
     function getUserCity() {
         const searchButtonEl = document.getElementById('citySearch');
         console.log(searchButtonEl);
-         //const cityInputEl = document.getElementById('search');
         searchButtonEl.addEventListener('click', function () {
             event.preventDefault();
             userCity = document.getElementById('city').value;
         if(!userCity)return;
-            console.log('You searched for this city: ', userCity);
             storeInLocalStorage(userCity);
             searchForCityWeather(userCity);
             searchForForecast(userCity);
@@ -33,7 +31,7 @@ function weatherForecast() {
         console.log("Local Storage: ", strCities)
     }
 
-    //storeInLocalStorage();
+    
 
     function displayLocalStorage() {
 
@@ -49,6 +47,7 @@ function weatherForecast() {
             );
         }
     };
+
     displayLocalStorage()
 
     function searchForCityWeather(userCity) {
@@ -69,43 +68,28 @@ function weatherForecast() {
             })
     };
 
-    function searchForCityCoord(userCity) {
-
-        const apiKey = "e3f2fa3a336dfd7d3e653d613da5e010";
-        const cityName = userCity;
-        const units = "imperial";
-        const oneDayWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=" + units + "&APPID=" + apiKey;
-        axios.get(oneDayWeatherURL)
-            .then(function (response) {
-                console.log(response)
-
-                document.getElementById("lat").innerHTML = "Latitude: " + response.data.city.coord.lat;
-                document.getElementById("lon").innerHTML = "Longitude: " + response.data.city.coord.lon;
-
-            })
-
-    };
-
+    
     function searchForForecast(userCity) {
         const apiKey = "e3f2fa3a336dfd7d3e653d613da5e010";
         const cityName = userCity;
         const units = "imperial";
         const oneDayWeatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&units=" + units + "&APPID=" + apiKey;
-        axios.get(oneDayWeatherURL)
-            .then(function (response) {
-                console.log(response.data.list[0])
-                document.getElementById("date0").innerHTML = "Date: " + response.data.list[0].dt_txt;
-                document.getElementById("temp0").innerHTML = "Temperature: " + response.data.list[0].main.temp + " °F";
-                document.getElementById("humidity0").innerHTML = "Humidity: " + response.data.list[0].main.humidity + "%";
-                document.getElementById("icon0").src = "http://openweathermap.org/img/w/" + response.data.list[0].weather[0].icon + ".png";
+            axios.get(oneDayWeatherURL)
+                .then(function (response) {
+                    console.log(response.data.list[0])
+                    document.getElementById("date0").innerHTML = "Date: " + response.data.list[0].dt_txt;
+                    document.getElementById("temp0").innerHTML = "Temperature: " + response.data.list[0].main.temp + " °F";
+                    document.getElementById("humidity0").innerHTML = "Humidity: " + response.data.list[0].main.humidity + "%";
+                    document.getElementById("icon0").src = "http://openweathermap.org/img/w/" + response.data.list[0].weather[0].icon + ".png";
+                
 
             })
-        axios.get(oneDayWeatherURL)
-            .then(function (response) {
-                document.getElementById("date1").innerHTML = "Date: " + response.data.list[10].dt_txt;
-                document.getElementById("temp1").innerHTML = "Temperature: " + response.data.list[10].main.temp + " °F";
-                document.getElementById("humidity1").innerHTML = "Humidity: " + response.data.list[10].main.humidity + "%";
-                document.getElementById("icon1").src = "http://openweathermap.org/img/w/" + response.data.list[10].weather[0].icon + ".png";
+            axios.get(oneDayWeatherURL)
+                .then(function (response) {
+                    document.getElementById("date1").innerHTML = "Date: " + response.data.list[10].dt_txt;
+                    document.getElementById("temp1").innerHTML = "Temperature: " + response.data.list[10].main.temp + " °F";
+                    document.getElementById("humidity1").innerHTML = "Humidity: " + response.data.list[10].main.humidity + "%";
+                    document.getElementById("icon1").src = "http://openweathermap.org/img/w/" + response.data.list[10].weather[0].icon + ".png";
 
             })
             axios.get(oneDayWeatherURL)
@@ -118,7 +102,7 @@ function weatherForecast() {
     
     
     
-                })
+            })
             axios.get(oneDayWeatherURL)
                 .then(function (response) {
                     document.getElementById("date3").innerHTML = "Date: " + response.data.list[26].dt_txt;
@@ -129,7 +113,7 @@ function weatherForecast() {
     
     
     
-                })
+            })
             axios.get(oneDayWeatherURL)
                 .then(function (response) {
                     document.getElementById("temp4").innerHTML = "Temperature: " + response.data.list[34].main.temp + " °F";
@@ -139,7 +123,7 @@ function weatherForecast() {
     
     
     
-                })
+            })
     
     
         };
